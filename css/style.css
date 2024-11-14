@@ -30,6 +30,6 @@
     border-radius: 8px;
     text-align: center;
 }
-select, option{
+select, option, input{
     color: black;
 }

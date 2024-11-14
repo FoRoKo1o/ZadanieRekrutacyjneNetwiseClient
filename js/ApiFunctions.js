@@ -2,7 +2,6 @@ var ApiUrl = "https://localhost:7129/api/Cat/";
 var pageSize = 10;
 
 async function GetSavedPage(page, amount) {
-    console.log("GetSavedPage", page, amount);
     const url = `${ApiUrl}GetSavedCatsPage?page=${page}&pageSize=${amount}`;
 
     try {
@@ -59,8 +58,8 @@ function UpdatePageCounter(savedAmount){
     page.innerHTML = '';
     var pagenumers = savedAmount / pageSize;
     
-    for(let i=0; i<pagenumers; i++){
-        page.innerHTML += `<option value="${i}">${i+1}</option>`;
+    for(let i=1; i<pagenumers +1; i++){
+        page.innerHTML += `<option value="${i}">${i}</option>`;
     }
     page.addEventListener('change', function(){
         const selectedPage = parseInt(page.value);
@@ -70,9 +69,18 @@ function UpdatePageCounter(savedAmount){
 async function showCatFacts(page) {
     try {
         const savedAmount = await GetSavedAmount();
+        if(savedAmount == 0){
+            return;
+        }
         UpdatePageCounter(savedAmount);
         GetSavedPage(1, pageSize);
     } catch (error) {
         console.error("Błąd podczas wyświetlania faktów o kotach:", error);
     }
+}
+async function DownloadNewFacts(){
+    let downloadAmount = document.getElementById('downloadAmount').value;
+    await fetch(`${ApiUrl}SaveFactsFromApi?amount=${downloadAmount}`)
+    showCatFacts(1, 10);
+    
 }
