@@ -1,4 +1,4 @@
-var ApiUrl = "http://frog02.mikr.us:40640/api/Cat/";
+var ApiUrl = "https://frog02.mikr.us:40640/api/Cat/";
 var pageSize = 10;
 
 async function GetSavedPage(page, amount) {
