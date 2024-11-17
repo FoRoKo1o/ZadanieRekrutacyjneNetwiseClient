@@ -1,4 +1,5 @@
-var ApiUrl = "https://localhost:7129/api/Cat/";
+// var ApiUrl = "https://localhost:7129/api/Cat/";
+var ApiUrl = "https://frog02-40640.wykr.es/api/Cat/";
 var pageSize = 10;
 
 async function GetSavedPage(page, amount) {
@@ -38,17 +39,17 @@ function CreateBox(element){
 
         let factDiv = document.createElement('div');
         factDiv.className = 'Fact';
-        factDiv.textContent = "Fact:" + element.fact;
+        factDiv.textContent = "Fact: " + element.fact;
         box.appendChild(factDiv);
 
         let LengthDiv = document.createElement('div');
         LengthDiv.className = 'Lengt';
-        LengthDiv.textContent = "length:" + element.length;
+        LengthDiv.textContent = "length: " + element.length;
         box.appendChild(LengthDiv);
 
         let DownloadDateDiv = document.createElement('div');
         DownloadDateDiv.className = 'DownloadDate';
-        DownloadDateDiv.textContent = "downloadDate:" + element.downloadDate;
+        DownloadDateDiv.textContent = "downloadDate: " + element.downloadDate;
         box.appendChild(DownloadDateDiv);
 
         return box;
